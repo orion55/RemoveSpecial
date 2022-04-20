@@ -36,3 +36,4 @@ _ReSharper*/
 packages
 !Build/*.exe
 .idea
+.vscode
