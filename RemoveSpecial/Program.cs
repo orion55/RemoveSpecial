@@ -2,4 +2,13 @@
 
 var settings = new Settings();
 
-Console.WriteLine(settings.Path);
+try
+{
+    var processor = new Processor(settings.Path);
+    processor.Rename();
+}
+catch (Exception ex)
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine(ex.Message);
+}
