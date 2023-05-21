@@ -5,8 +5,8 @@ namespace RemoveSpecial;
 public class Processor
 {
     private readonly string _path;
-    private readonly Regex _compiledUnicodeRegex = new Regex(@"[^\u0000-\u007F|^\u0400-\u04FF]", RegexOptions.Compiled);
-    private readonly Regex _multipleSpacesRegex = new Regex(@"\s+", RegexOptions.Compiled);
+    private readonly Regex _compiledUnicodeRegex = new(@"[^\u0000-\u007F|^\u0400-\u04FF]", RegexOptions.Compiled);
+    private readonly Regex _multipleSpacesRegex = new(@"\s+", RegexOptions.Compiled);
 
     public Processor(string path)
     {
@@ -47,6 +47,6 @@ public class Processor
     {
         var line = _compiledUnicodeRegex.Replace(inputValue, String.Empty);
         line = _multipleSpacesRegex.Replace(line, " ");
-        return line.Trim();
+        return line.Trim().ToLower();
     }
 }
